@@ -1,13 +1,20 @@
 const mongoose = require("mongoose");
-const Usuario=require("./models/Usuario")
+const Usuarios=require("./models/Usuarios");
+const Cursos=require("./models/Cursos");
+const Notafinales=require("./models/Notafinales");
+const Temas=require("./models/Temas");
+const Actividades=require("./models/Actividades");
+
+
+
 class Controller{
 constructor(){
     this.connect();
-}
-async connect(){
-try{
+   }
+  async connect(){
+   try{
     await mongoose.connect(
-         "mongodb+srv://jesusmanuelcortesb68:<jesuscorteS17*>@cluster0-5fqma.mongodb.net/MASTER-2?retryWrites=true&w=majority",
+        "mongodb+srv://jesusmanuelcortesb68:<jesuscortes17>@cluster0-0g6u4.mongodb.net/?retryWrites=true&w=majority",
         {useNewUrlParser:true}
     );
     console.log("conectados a la base de datos")
@@ -15,12 +22,32 @@ try{
     console.error(e)
         }
     }
-        getUsuario(res){
-            Usuario.find({}, (err, Usuario)=>{
+ getUsuarios(res){
+            Usuarios.find({}, (err, usuarios)=>{
                 if(err) throw err;
-                res.send(Usuario);
+                res.send(Usuarios);
 
             })
         }
+
+ getCursos(res){
+            Cursos.find({}, (err, cursos)=>{
+                if(err) throw err;
+                res.send(curso);
+
+            })
+        }
+
+
+getActividades(res){
+            Actividades.find({}, (err, actividades)=>{
+                if(err) throw err;
+
+                res.send(actividades);
+
+            })
+        }
+
+
     }
 exports.controller=new Controller()
