@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Acudientes=require("./models/Acudientes")
+const Usuario=require("./models/Usuario")
 class Controller{
 constructor(){
     this.connect();
@@ -7,7 +7,7 @@ constructor(){
 async connect(){
 try{
     await mongoose.connect(
-        "mongodb+srv://deyes:a1b2c3d4@cluster0-yg4ca.mongodb.net/trabajo?retryWrites=true&w=majority",
+         "mongodb+srv://jesusmanuelcortesb68:<jesuscorteS17*>@cluster0-5fqma.mongodb.net/MASTER-2?retryWrites=true&w=majority",
         {useNewUrlParser:true}
     );
     console.log("conectados a la base de datos")
@@ -15,10 +15,10 @@ try{
     console.error(e)
         }
     }
-        getAcudientes(res){
-            Acudientes.find({}, (err, acudientes)=>{
+        getUsuario(res){
+            Usuario.find({}, (err, Usuario)=>{
                 if(err) throw err;
-                res.send(acudientes);
+                res.send(Usuario);
 
             })
         }

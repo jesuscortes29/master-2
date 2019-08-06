@@ -1,68 +1,47 @@
 const express = require("express");
 const app = express();
-const {controller}= require("./Controller")
-const bodyParser= require("body-parser")
+const {controller}= require("./Controller");
+const bodyParser= require("body-parser");
+
 app.use(bodyParser.json());
 
 app.get("/", (req,res )=>{
-    res.send("Toma de Asistencia");
+    res.send("funciona");
 })
 
-app.get("/estudiantes", (req,res )=>{
-let estudiantes=[{nombre:"genesis",apellido:"canterp",tipoid:"ti",curso:"5",id_acudientes:0001},
-
-                {nombre:"angelica",apellido:"romero",tipoid:"ti",curso:"4",id_acudientes:0002},
- ]
-
-res.send(estudiantes)
-})
-
-app.get("/materias", (req,res )=>{
-let estudiantes=[{nombre:"programacion web",in_horaria:"2"},
-
-                {nombre:"algoritmia",in_horaria:"2"},
- ]
-
-res.send(materias)
-})
-
-app.get("/profesores", (req,res )=>{
-let profesores=[{nombre:"juan",apellido:"cantero",telefono:"3205214875"},
-
-                {nombre:"pedro",apellido:"cantero",telefono:"321456789"},
- ]
-
-res.send(profesores)
-})
-
-app.get("/asistencia", (req,res )=>{
-let asistencia=[{asistencia:"2",inasistecia:"4",fecha_asistenci:"2/09/2019"},
- ]
-
-res.send(asistencia)
-})
-
-
-app.get("/listados", (req,res )=>{
-let listados=[{fecha:"2/09/2019",id_materias:"4"},
- ]
-
-res.send(listados)
-})
-
-
-app.get("/acudientes", (req,res )=>{
-/*let acudientes=[
-    {nombre:"mario",apellido:"perez",telefono:"3205214875"},
- ]
-
-res.send(acudientes)*/
-controller.getAcudientes(res);
+app.get("/usuario", (req,res )=>{
+   controller.getUsuario( res);
 })
 
 app.post("/estudiantes",(req, res)=>{
     console.log(req.body);
     res.send("ok");
 })
+
+app.get("/temas/:id_temas/actividades/:id_actividades/evalauciones",(req, res)=>{
+    console.log(req.params);
+    res.send("ok");
+})
+
+app.get("/temas/:id_temas/actividades/:id_actividades",(req, res)=>{
+    console.log(req.params);
+    res.send("ok");
+})
+
+app.get("/usuarios/:id_usuarios/cursos/id_curso/temas/:id_temas",(req, res)=>{
+    console.log(req.params);
+    res.send("ok");
+})
+
+app.get("/usuarios/:nota_final",(req, res)=>{
+    console.log(req.params);
+    res.send("ok");
+})
+
+app.get("/cursos/id_curso/temas/:id_temas/actividad",(req, res)=>{
+    console.log(req.params);
+    res.send("ok");
+})
+
 exports.app = app;
 
